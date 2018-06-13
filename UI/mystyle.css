@@ -75,7 +75,7 @@ body{
 	margin-bottom: 20px;
 }
 
-.Login input[type="text"], input[type="password"]{
+.Login input[type="text"], input[type="password"], input[type="email"]{
 	border: none;
 	border-bottom: 1px solid #fff;
 	background: transparent;
