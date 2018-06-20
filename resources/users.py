@@ -5,25 +5,24 @@ user = Users()
 user_api = Namespace("user")
 user_register = user_api.model("Register A User", {"username": fields.String,
                                                    "email": fields.String,
-                                                   "password": fields.String})
+                                                   "password": fields.String,
+                                                   "driver": fields.String})
 
 
 class Users(Resource):
-    """Contains GET and POST"""
+    """Contains POST"""
     @user_api.expect(user_register)
-    def get(self):
-        response = user.get_all_users()
-        return response
-
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument("username", type=str, help="Username must be provided", required=True, location=["json"])
         parser.add_argument("email", type=str, help="E-Mail must be provided", location=["json"], required=True, )
         parser.add_argument("password", type=str, help="Password must be provided",
                             location=["json"], required=True, )
+        parser.add_argument("driver", type=str, help="Fill if you are a driver", location=["json"], required=False)
+        parser.add_argument("admin", type=str, help="Fill if you are a driver", location=["json"], required=False)
         args = parser.parse_args()
         response = user.register(username=args["username"], email=args["email"],
-                                 password=args["password"])
+                                 password=args["password"], driver=args["driver"], admin=args["admin"])
         return response, 201
 
 

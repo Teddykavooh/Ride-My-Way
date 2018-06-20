@@ -47,7 +47,7 @@ class Users:
 
     def register(self, username, email, password, driver=False, admin=False):
         hidden = generate_password_hash(password=password)
-        self.users[username] = {"email": email, "password": hidden}
+        self.users[username] = {"email": email, "password": hidden, "driver": driver, "admin": admin}
         return {"txt": "User Registered"}
 
     def login(self, username, password):
@@ -58,6 +58,10 @@ class Users:
                 return {"txt": "Invalid Password"}
         else:
             return {"txt": "Invalid Username"}
+
+    def delete_a_user(self, user_id):
+        del self.users[user_id]
+        return {"txt": "User Deleted"}
 
 
 # users_s = Users()

@@ -11,11 +11,11 @@ ride_offer = ride_api.model("Offer A Ride", {"driver": fields.String,
 
 class Rides(Resource):
     """Contains GET and POST"""
-    @ride_api.expect(ride_offer)
     def get(self):
         response = rides.get_all_rides()
         return response
 
+    @ride_api.expect(ride_offer)
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument("driver", type=str, help="Driver must be provided", required=True, location=["json"])

@@ -21,4 +21,6 @@ def create_app(config_name):
     api.add_namespace(ride_api, path="/api/v1")
     from resources.users import user_api
     api.add_namespace(user_api, path="/api/v1")
+    from resources.admin import user_api
+    api.add_namespace(user_api, path="/api/v1")
     return app
