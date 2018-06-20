@@ -8,10 +8,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 class UserTests(ConfigTestCase):
     """This class contains UserTests """
-    def test_get_all_users(self):
-        """We are testing if we can get all users"""
-        response = self.client().get("/api/v1/users")
-        self.assertEqual(response.status_code, 200)
+    # def test_get_all_users(self):
+    #     """We are testing if we can get all users"""
+    #     response = self.client().get("/api/v1/users")
+    #     self.assertEqual(response.status_code, 200)
 
     def test_register(self):
         """We are testing user registration"""
