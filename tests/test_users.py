@@ -8,10 +8,10 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 class UserTests(ConfigTestCase):
     """This class contains UserTests """
-    # def test_get_all_users(self):
-    #     """We are testing if we can get all users"""
-    #     response = self.client().get("/api/v1/users")
-    #     self.assertEqual(response.status_code, 200)
+    def test_get_all_users(self):
+        """We are testing if we can get all users"""
+        response = self.client().get("/api/v1/users")
+        print(response.data)
 
     def test_register(self):
         """We are testing user registration"""
@@ -23,19 +23,20 @@ class UserTests(ConfigTestCase):
         """We are testing user login"""
         user = {"username": "Mueni Kavoo", "password": "01234"}
         response = self.client().post("/api/v1/users/login", data=json.dumps(user), content_type='application/json')
-        self.assertEqual(response.status_code, 201)
+        self.assertEqual(response.status_code, 200)
 
     def test_invalid_username(self):
         """We are testing response to invalid username"""
         user = {"username": "Mue Kavoo", "password": "01234"}
         response = self.client().post("/api/v1/users/login", data=json.dumps(user), content_type='application/json')
-        print(response.data)
+        self.assertIn("Invalid Username", str(response.data))
 
     def test_invalid_password(self):
         """We are testing response to invalid username"""
         user = {"username": "Mueni Kavoo", "password": "34"}
         response = self.client().post("/api/v1/users/login", data=json.dumps(user), content_type='application/json')
-        print(response.data)
+        self.assertIn("Invalid Password", str(response.data))
+        self.assertEqual(response.status_code, 200)
 
 
 if __name__ == '__main__':

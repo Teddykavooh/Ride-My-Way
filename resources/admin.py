@@ -1,4 +1,4 @@
-from flask_restplus import Resource, Namespace, reqparse, fields
+from flask_restplus import Resource, Namespace
 from app.models import Users
 
 user = Users()
@@ -16,7 +16,8 @@ class Users2(Resource):
     """Contains DELETE"""
     def delete(self, user_id):
         response = user.delete_a_user(user_id=user_id)
+        return response
 
 
-user_api.add_resource(Users1, "/users1")
-user_api.add_resource(Users2, "/users2/<int:user_id>")
+user_api.add_resource(Users1, "/users")
+user_api.add_resource(Users2, "/users/<int:user_id>")

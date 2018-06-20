@@ -34,7 +34,7 @@ class Login(Resource):
         parser.add_argument("password", type=str, help="Password must be provided", location=["json"], required=True)
         args = parser.parse_args()
         response = user.login(username=args["username"], password=args["password"])
-        return response, 201
+        return response
 
 
 user_api.add_resource(Users, "/users")
