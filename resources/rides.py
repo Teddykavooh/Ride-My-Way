@@ -1,0 +1,49 @@
+from flask_restplus import Resource, Namespace, reqparse, fields
+from app.models import Rides
+
+rides = Rides()
+
+ride_api = Namespace("rides")
+ride_offer = ride_api.model("Offer A Ride", {"driver": fields.String,
+                                             "route": fields.String,
+                                             "time": fields.String})
+
+
+class Rides(Resource):
+    """Contains GET and POST"""
+    @ride_api.expect(ride_offer)
+    def get(self):
+        response = rides.get_all_rides()
+        return response
+
+    def post(self):
+        parser = reqparse.RequestParser()
+        parser.add_argument("driver", type=str, help="Driver must be provided", required=True, location=["json"])
+        parser.add_argument("route", type=str, help="Route must be provided", location=["json"], required=True,)
+        parser.add_argument("time", type=str, help="Time must be provided", location=["json"], required=True,)
+        args = parser.parse_args()
+        response = rides.post_a_ride(driver=args["driver"], route=args["route"], time=args["time"])
+        return response, 201
+
+
+class Ride(Resource):
+    def get(self, ride_id):
+        response = rides.get_a_ride(ride_id=ride_id)
+        return response
+
+    def put(self, ride_id):
+        parser = reqparse.RequestParser()
+        parser.add_argument("driver", type=str, help="Driver must be provided", location=["json"], required=True)
+        parser.add_argument("route", type=str, help="Route must be provided", location=["json"], required=True)
+        parser.add_argument("time", type=str, help="Time must be provided", location=["json"], required=True)
+        args = parser.parse_args()
+        response = rides.edit(ride_id=ride_id, driver=args["driver"], route=args["route"], time=args["time"])
+        return response
+
+    def delete(self, ride_id):
+        response = rides.delete_a_ride(ride_id=ride_id)
+        return response
+
+
+ride_api.add_resource(Rides, '/rides')
+ride_api.add_resource(Ride, "/rides/<int:ride_id>")
