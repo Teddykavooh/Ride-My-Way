@@ -9,7 +9,7 @@ class Users1 (Resource):
     """Contains GET and POST"""
     def get(self):
         response = user.get_all_users()
-        return response
+        return response, 200
 
 
 class Users2(Resource):
