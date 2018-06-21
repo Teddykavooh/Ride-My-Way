@@ -1,5 +1,7 @@
 from werkzeug.security import generate_password_hash, check_password_hash
 
+request_ride = {}
+
 
 class Rides:
     """Ride's Functionality"""
@@ -27,6 +29,12 @@ class Rides:
         self.rides[ride_id] = {"driver": driver, "route": route, "time": time}
         return {"txt": "Ride Edited"}
 
+    def request_to_join_a_ride(self, ride_id, passenger_name, pick_up_station, time):
+        self.rides.get(ride_id)
+        request_ride[ride_id] = {"passenger_name": passenger_name, "pick_up_station": pick_up_station,
+                                 "time": time}
+        return {"txt": "Ride Requested"}
+
 
 # ride = Rides()
 # ride.post_a_ride("Mike", "Syoki - Nai", "6:30am")
@@ -35,7 +43,8 @@ class Rides:
 # print(ride.delete_a_ride(2))
 # print(ride.get_all_rides())
 # print(ride.edit(2, "Ian", "", ""))
-# print(ride.get_all_rides())
+# print(ride.request_to_join_a_ride(2, "Junior Tedd", request=False))
+
 
 class Users:
     """Users Functionality"""
@@ -72,3 +81,4 @@ class Users:
 # print(users_s.login("Mike Mbulwa", "1234"))
 # print(users_s.delete_a_user("Mike Mbulwa"))
 # print(users_s.get_all_users())
+

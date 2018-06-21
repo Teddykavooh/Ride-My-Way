@@ -41,6 +41,13 @@ class RideTests(ConfigTestCase):
         response = self.client().delete("/api/v1/rides/2")
         self.assertEqual(response.status_code, 200)
 
+    def test_request_to_join_a_ride(self):
+        """Test for requesting to join a ride"""
+        ride = {"passenger_name": "Teddy Antony", "pick_up_station": "Kwa Ndeti", "time": "9:30am"}
+        response = self.client().post("/api/v1/rides/1/requests", data=json.dumps(ride),
+                                      content_type='application/json')
+        self.assertEqual(response.status_code, 200)
+
 
 if __name__ == '__main__':
     unittest.main()
