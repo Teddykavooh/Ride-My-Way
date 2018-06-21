@@ -19,7 +19,8 @@ class ConfigTestCase(unittest.TestCase):
         ride.post_a_ride("Tedd", "Timba - Head", "5:30pm")
 
         user = Users()
-        user.register("Mueni Kavoo", "mueni@gmail.com", "01234", driver=True)
+        user.register("Elneny Mohah", "mohah@gmail.com", "01234", driver=True)
+        user.register("Honeybunch Kaindu", "kaindu@gmail.com", "1440", driver=False)
 
 
 if __name__ == '__main__':

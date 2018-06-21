@@ -39,8 +39,10 @@ class Rides:
 
 class Users:
     """Users Functionality"""
-    users = {"Mueni Kavoo": {"email": "mueni@gmail.com", "password": generate_password_hash("01234")},
-             "Mike Mbulwa": {"email": "mike@gmail.com", "password": generate_password_hash("1234")}}
+    users = {"Mueni Kavoo": {"email": "mueni@gmail.com", "password": generate_password_hash("01234"),
+                             "driver": False, "admin": True},
+             "Mike Mbulwa": {"email": "mike@gmail.com", "password": generate_password_hash("1234"),
+                             "driver": True, "admin": False}}
 
     def get_all_users(self):
         return self.users
@@ -59,8 +61,8 @@ class Users:
         else:
             return {"txt": "Invalid Username"}
 
-    def delete_a_user(self, user_id):
-        del self.users[user_id]
+    def delete_a_user(self, username):
+        del self.users[username]
         return {"txt": "User Deleted"}
 
 
@@ -68,3 +70,5 @@ class Users:
 # print(users_s.register("Anton Kavoo", "anton@yahoo.com", "0123", admin=True))
 # print(users_s.get_all_users())
 # print(users_s.login("Mike Mbulwa", "1234"))
+# print(users_s.delete_a_user("Mike Mbulwa"))
+# print(users_s.get_all_users())

@@ -45,5 +45,5 @@ class Ride(Resource):
         return response
 
 
-ride_api.add_resource(Rides, '/rides')
+ride_api.add_resource(Rides, "/rides")
 ride_api.add_resource(Ride, "/rides/<int:ride_id>")

@@ -11,7 +11,7 @@ class UserTests(ConfigTestCase):
     def test_get_all_users(self):
         """We are testing if we can get all users"""
         response = self.client().get("/api/v1/users")
-        print(response.data)
+        self.assertEqual(response.status_code, 200)
 
     def test_register(self):
         """We are testing user registration"""
@@ -30,12 +30,18 @@ class UserTests(ConfigTestCase):
         user = {"username": "Mue Kavoo", "password": "01234"}
         response = self.client().post("/api/v1/users/login", data=json.dumps(user), content_type='application/json')
         self.assertIn("Invalid Username", str(response.data))
+        self.assertEqual(response.status_code, 200)
 
     def test_invalid_password(self):
         """We are testing response to invalid username"""
         user = {"username": "Mueni Kavoo", "password": "34"}
         response = self.client().post("/api/v1/users/login", data=json.dumps(user), content_type='application/json')
         self.assertIn("Invalid Password", str(response.data))
+        self.assertEqual(response.status_code, 200)
+
+    def test_delete_a_user(self):
+        """Test for deleting a user"""
+        response = self.client().delete("/api/v1/users/Elneny Mohah")
         self.assertEqual(response.status_code, 200)
 
 
