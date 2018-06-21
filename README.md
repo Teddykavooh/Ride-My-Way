@@ -53,10 +53,10 @@ activate.
 ## Github link
 * https://github.com/Teddykavooh/Ride-My-Way/tree/apiv1
 
-##Pivotal Tracker link
+## Pivotal Tracker link
 * https://www.pivotaltracker.com/n/projects/2177587
 
-##Heroku
+## Heroku
 *
 
 ## Author
