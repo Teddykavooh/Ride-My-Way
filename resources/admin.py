@@ -6,7 +6,7 @@ user_api = Namespace("admin")
 
 
 class Users1 (Resource):
-    """Contains GET and POST"""
+    """Contains GET"""
     def get(self):
         response = user.get_all_users()
         return response, 200
