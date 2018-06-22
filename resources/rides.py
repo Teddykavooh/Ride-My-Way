@@ -38,6 +38,7 @@ class Ride(Resource):
         response = rides.get_a_ride(ride_id=ride_id)
         return response
 
+    @ride_api.expect(ride_offer)
     def put(self, ride_id):
         parser = reqparse.RequestParser()
         parser.add_argument("driver", type=str, help="Driver must be provided", location=["json"],
