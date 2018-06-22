@@ -11,7 +11,11 @@ def create_app(config_name):
                                    "provides drivers with the ability to"
                                    " create ride oﬀers  and passengers  "
                                    "to join available ride oﬀers.",
-              title="Ride-My-Way")
+              title="Ride-My-Way",
+              version='1.0',
+
+              doc='/api/v1/documentation'
+              )
 
     app.config.from_object(app_config[config_name])
     app.config.from_pyfile('config.py')
