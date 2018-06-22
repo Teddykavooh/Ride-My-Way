@@ -53,6 +53,7 @@ activate.
 
 ## Version Control
 * This was done by GitHub
+
 ## Github link
 * https://github.com/Teddykavooh/Ride-My-Way/tree/apiv1
 
@@ -60,7 +61,7 @@ activate.
 * https://www.pivotaltracker.com/n/projects/2177587
 
 ## Heroku
-* https://git.heroku.com/ride-my-way-api-v1.git
+* https://ride-my-way-api-v1.herokuapp.com/api/v1/documentation
 
 ## Author
 * Antony Kavoo
