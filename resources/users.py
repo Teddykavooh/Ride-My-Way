@@ -2,7 +2,7 @@ from flask_restplus import Resource, Namespace, reqparse, fields
 from app.models import Users
 
 user = Users()
-user_api = Namespace("Users")
+user_api = Namespace("Users", description="All User Endpoints")
 user_register = user_api.model("Register A User", {"username": fields.String,
                                                    "email": fields.String,
                                                    "password": fields.String,

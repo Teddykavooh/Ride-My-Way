@@ -3,7 +3,7 @@ from app.models import Rides
 
 rides = Rides()
 
-ride_api = Namespace("Rides")
+ride_api = Namespace("Rides", description="All Rides Endpoints")
 ride_offer = ride_api.model("Offer A Ride", {"driver": fields.String,
                                              "route": fields.String,
                                              "time": fields.String})

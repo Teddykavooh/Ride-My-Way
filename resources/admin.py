@@ -2,7 +2,7 @@ from flask_restplus import Resource, Namespace
 from app.models import Users
 
 user = Users()
-user_api = Namespace("Admin")
+user_api = Namespace("Admin", description="All Admin Endpoints")
 
 
 class Users1 (Resource):
