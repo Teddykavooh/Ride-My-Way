@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 # ***Ride-My-Way***
 ***
-![Home Image](https://raw.github.com/mikenthiwa/Ride-My-Way/apiv1/img.png)
+![Home Image](https://raw.github.com/Teddykavooh/Ride-My-Way/apiv1/2.jpg)
 
 * Ride-my App is a carpooling application that provides drivers with the ability to create ride oﬀers and passengers to join the available ride oﬀers.
 ## Getting Started
@@ -70,3 +70,5 @@ activate.
 
 ## Acknowledgement
 * Great appreciation to everyone who assisted in willing this project to its current glory.Thank you.
+
+![Home Image](https://raw.github.com/Teddykavooh/Ride-My-Way/apiv1/1.jpg)
