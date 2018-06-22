@@ -6,7 +6,9 @@ user_api = Namespace("Users")
 user_register = user_api.model("Register A User", {"username": fields.String,
                                                    "email": fields.String,
                                                    "password": fields.String,
-                                                   "driver": fields.String})
+                                                   "driver is either True Or False": fields.Boolean})
+user_login = user_api.model("Login User", {"username": fields.String,
+                                           "password": fields.String})
 
 
 class Users(Resource):
@@ -32,6 +34,7 @@ class Users(Resource):
 
 class Login(Resource):
     """Contains POST"""
+    @user_api.expect(user_login)
     def post(self):
         parser = reqparse.RequestParser()
         parser.add_argument("username", type=str, help="Username must be provided", required=True,
